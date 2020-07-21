@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All Student</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2 style="margin-top: 15px">All Student</h2>
+    <p>Use 'Add Student' button to add more student information.</p>
+    <a  th:href="@{/add}" class="btn btn-success" >Add Student</a>
+    <table class="table table-bordered table-striped" style="margin-top:10px">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Department</th>
+            <th>CGPA</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student : ${students}">
+            <td>[[${student.sid}]]</td>
+            <td>[[${student.name}]]</td>
+            <td>[[${student.address}]]</td>
+            <td>[[${student.department}]]</td>
+            <td>[[${student.cgpa}]]</td>
+            <td style="text-align:center">
+                <a th:href="@{/edit(sid=${student.sid})}" class="btn btn-primary">Edit</a>
+                <a th:href="@{delete(sid=${student.sid})}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
